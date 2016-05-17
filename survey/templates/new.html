@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+	{% block content %}
+  <div class="container">
+    <h2>Create a New Yes/No Survey</h2>
+    
+      <form method="POST" action="/questions">
+      <p>Question: <input type="text" class="form-control" name="question_text"></p>
+      <p>Catagory:
+             <select class="selectpicker" name="category">
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+             </select></p>
+             <br />
+      <p><input type="submit" value="Create a new Survey"></p>
+      </form>
+  </div>
+    
+    <br />
+   
+    <br />
+
+    <div class="container">
+      <h2>Create a New Multiple Choice Survey</h2>
+       <form method="POST" action="/questions/mc">
+       <p>Question: <input type="text" class="form-control" name="question_text"></p>
+       <p>Answer 1: <input type="text" name="response_text_1"></p>
+       <p>Answer 2: <input type="text" name="response_text_2"></p>
+       <p>Answer 3: <input type="text" name="response_text_3"></p>
+       <p>Answer 4: <input type="text" name="response_text_4"></p>
+       <p>Category:
+             <select class="selectpicker" name="category">
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+             </select></p>
+             <br />
+       <p><input type="submit" value="Create a new Survey"></p>
+       </form>
+    </div>
+    
+	{% endblock %}

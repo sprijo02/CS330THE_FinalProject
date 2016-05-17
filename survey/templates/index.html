@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+   {% for category in categories %}
+   <h2 class="well well-lg">{{ category.name }}</h2>
+   {% for question in questions %}
+   {% if category.id == question.category_id %}
+   <div>
+     <p>
+       <h5 ><a href="/questions/{{ question.id }}">{{ question.question_text }}</a></h5>
+       <ul>
+      	 <li>Yes - {{ question.number_of_yes_votes }} </li>
+      	 <li>No - {{ question.number_of_no_votes }} </li>
+      	 <li>Maybe - {{ question.number_of_maybe_votes }}</li>
+         
+       </ul>
+      </p>
+    </div>
+    {% else %}
+
+    {% endif %}
+    {% endfor %}
+    {% for myquestion in mcquestions %}
+    {% if category.id == myquestion.category_id %}
+    <div>
+     <p>
+       <p><a href="/questions/mc/{{ myquestion.id }}">{{ myquestion.question_text }}</a></p>
+       <ul>
+         <li>{{ myquestion.response_text_1 }} - {{ myquestion.number_of_1 }} </li>
+         <li>{{ myquestion.response_text_2 }} - {{ myquestion.number_of_2 }} </li>
+         <li>{{ myquestion.response_text_3 }} - {{ myquestion.number_of_3 }} </li>
+         <li>{{ myquestion.response_text_4 }} - {{ myquestion.number_of_4 }} </li>
+       </ul>
+      </p>
+    </div>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+
+{% endblock %}

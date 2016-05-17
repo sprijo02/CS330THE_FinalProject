@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+	<p>
+		{% if myquestion %}
+		<p>{{ myquestion.question_text }}</p>
+
+		<form action="/questions/mc/{{ myquestion.id }}/vote" method="POST">
+			<input type="radio" name="vote" value="1">{{ myquestion.response_text_1 }}<br>
+			<input type="radio" name="vote" value="2">{{ myquestion.response_text_2 }}<br>
+			<input type="radio" name="vote" value="3">{{ myquestion.response_text_3 }}<br>
+			<input type="radio" name="vote" value="4">{{ myquestion.response_text_4 }}<br>
+			<input type="submit" value="Submit" /><br>
+		</form>
+		<p><a href="/questions/mc/{{ myquestion.id }}">Back to Question</a></p>
+		{% else %}
+			Not match found!
+		{% endif %}
+	</p>
+</div>
+<hr />
+
+{% endblock %}

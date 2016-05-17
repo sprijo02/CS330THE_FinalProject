@@ -1,0 +1,41 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Welcome to Survey Application</title>
+
+    <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css">
+
+  </head>
+  <body>
+    {% if message %}
+      <p class="alert alert-success" style="text-align: center;">{{ message }}</p>
+    {% endif %}
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="/">All Questions</a></li>   
+            <li role="presentation" class="active"><a href="/questions/new">Create a new Question</a></li>
+          </ul>
+        </nav>
+        <h3 class="texted-muted">GiJo Python Survey App</h3>
+      </div>
+      <div class="jumbotron">
+        <h1>Survey App</h1>
+        <p class="lead"></p>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+    <br\>
+    <footer class="footer">
+      <p>&copy; GiJo 2016</p>
+    </footer>
+    <hr>
+    
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+     <p>
+     {% if myquestion %}
+     <p>{{ myquestion.question_text}}
+       <ul>
+         <li>{{ myquestion.response_text_1 }} - {{ myquestion.number_of_1 }} </li>
+         <li>{{ myquestion.response_text_2 }} - {{ myquestion.number_of_2 }} </li>
+         <li>{{ myquestion.response_text_3 }} - {{ myquestion.number_of_3 }} </li>
+         <li>{{ myquestion.response_text_4 }} - {{ myquestion.number_of_4 }} </li>
+       </ul>
+       <p><a href="/questions/mc/{{ myquestion.id }}/vote">Cast your vote now</a></p>
+        <form action="/questions/mc/{{ myquestion.id }}" method="POST"><input type="submit" value="Delete Question"></form>
+        {% else %}
+        No match found!
+      {% endif %}
+      </p>
+    </div>
+    <hr />
+
+{% endblock %}
